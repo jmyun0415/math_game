@@ -161,8 +161,9 @@ class App:
                     self.intermission = False
                     if self.logic.match_winner():
                         w = self.logic.p1 if self.logic.match_winner() == 1 else self.logic.p2
+                        feat_num, feat_context = self.logic.get_featured_number()
                         self.frame.destroy()
-                        VictoryScreen(self.root, w)
+                        VictoryScreen(self.root, w, featured_number=feat_num, number_context=feat_context)
                     else:
                         self.logic.game_idx += 1
                         self.load_game()
